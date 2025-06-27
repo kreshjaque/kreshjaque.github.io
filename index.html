@@ -1,13 +1,780 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Under Construction !!</title>
-		<link rel="stylesheet" href="asserts/style/style.css" media="screen" type="text/css" />
-	</head>
-	<body>
-	<div class="glitch-container">
-		<div class="glitch">WIP</div>
-	</div>
-	</body>
+<html lang="ta" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>இன்ஃபோகிராஃபிக்: இந்திய நிலம் மற்றும் அறிவுசார் ஒழுங்குமுறை</title>
+    <!-- Local Tailwind CSS file -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Local Chart.js file (installed via npm) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <!-- Local Google Fonts CSS file -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arima&family=Noto+Sans+Tamil&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-gray-50 text-gray-800 antialiased loading">
+    <div id="loading-overlay">
+      <div class="spinner"></div>
+    </div>
+    <div class="container mx-auto p-4 md:p-8 max-w-5xl flex-grow flex flex-col">
+      <header class="text-center mb-6 md:mb-10">
+        <h1
+          class="text-4xl md:text-5xl font-bold text-[#3e423e] mb-2"
+          data-lang-key="headerTitle"
+        >
+          இந்திய நிலம் மற்றும் அறிவுசார் ஒழுங்குமுறை
+        </h1>
+        <p class="text-lg text-gray-600" data-lang-key="headerSubtitle">
+          விவசாய நில உரிமை மற்றும் பாரம்பரிய அறிவைப் பாதுகாப்பதற்கான ஒரு பார்வை
+        </p>
+        <div class="flex justify-center mt-4 space-x-2">
+          <button
+            id="language-toggle"
+            class="px-4 py-2 rounded-full bg-[#118AB2] text-white text-sm font-semibold transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 shadow-md hover:shadow-lg"
+          >
+            English / தமிழ்
+          </button>
+        </div>
+      </header>
+    </div>
+    <!-- Close the container div here -->
+
+    <!-- Tab Navigation (moved outside the container) -->
+    <nav class="mx-auto max-w-5xl mb-8 md:mb-12 border-b border-gray-300">
+      <div class="flex justify-center space-x-4">
+        <button
+          class="tab-button px-6 py-3 text-lg font-semibold text-gray-600 active"
+          data-tab="land"
+          data-lang-key="tabLand"
+        >
+          பகுதி 1: நிலம்
+        </button>
+        <button
+          class="tab-button px-6 py-3 text-lg font-semibold text-gray-600"
+          data-tab="non-agri"
+          data-lang-key="tabNonAgri"
+        >
+          பகுதி 1.5: நகர நிலம்
+        </button>
+        <button
+          class="tab-button px-6 py-3 text-lg font-semibold text-gray-600"
+          data-tab="knowledge"
+          data-lang-key="tabKnowledge"
+        >
+          பகுதி 2: அறிவு
+        </button>
+        <button
+          class="tab-button px-6 py-3 text-lg font-semibold text-gray-600"
+          data-tab="next-steps"
+          data-lang-key="tabNextSteps"
+        >
+          அடுத்த படிகள்
+        </button>
+        <button
+          class="tab-button px-6 py-3 text-lg font-semibold text-gray-600"
+          data-tab="summary"
+          data-lang-key="tabSummary"
+        >
+          சுருக்கம்
+        </button>
+        <button
+          class="tab-button px-6 py-3 text-lg font-semibold text-gray-600"
+          data-tab="contact"
+          data-lang-key="tabContact"
+        >
+          நன்றி
+        </button>
+      </div>
+    </nav>
+
+    <div class="container mx-auto p-4 md:p-8 max-w-5xl flex-grow flex flex-col">
+      <!-- Re-open container for main content -->
+
+      <!-- Tab Content Areas -->
+      <main class="flex-grow flex flex-col items-center justify-center">
+        <!-- பகுதி 1: நிலத்தின் கதை -->
+        <section id="tab-land" class="tab-content active w-full">
+          <div
+            class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 land-background w-full max-w-4xl mx-auto flex flex-col justify-center transition duration-300 ease-in-out hover:shadow-2xl"
+          >
+            <h2
+              class="text-3xl font-bold text-center mb-8 cascade delay-100"
+              data-lang-key="landSectionTitle"
+            >
+              <span class="text-4xl mr-3">🗺️</span>பகுதி 1: நிலத்தின் கதை -
+              உரிமையைப் பாதுகாத்தல்
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-8 items-center flex-grow">
+              <div class="cascade delay-200">
+                <h3
+                  class="text-2xl font-bold mb-4"
+                  data-lang-key="agriLandIntroTitle"
+                >
+                  விவசாய நில உரிமைக்கு ஒரு அறிமுகம்
+                </h3>
+                <p class="mb-4" data-lang-key="agriLandIntroDesc">
+                  விவசாய நிலம் இந்தியாவின் பொருளாதாரத்தின் முதுகெலும்பாகவும்,
+                  கோடிக்கணக்கான மக்களின் வாழ்வாதாரமாகவும் உள்ளது. நிலக்
+                  குவிப்பைத் தடுத்து, சமமான விநியோகத்தை உறுதிசெய்ய, அதன் உரிமையை
+                  நிர்வகிக்க தெளிவான சட்டங்கள் உள்ளன.
+                </p>
+                <div class="bg-cyan-50 p-4 rounded-lg info-card">
+                  <h4 class="font-bold" data-lang-key="stateLawsTitle">
+                    <span class="mr-2">📜</span>மாநில வாரியான சட்டங்கள்
+                  </h4>
+                  <p data-lang-key="stateLawsDesc">
+                    இந்தியாவில் நிலம் என்பது மாநில அரசின் அதிகார வரம்புக்குள்
+                    வருவதால், ஒவ்வொரு மாநிலத்திற்கும் விவசாய நில உரிமை தொடர்பான
+                    தனித்தனி சட்டங்கள் மற்றும் உச்சவரம்பு விதிகள் உள்ளன.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="text-center bg-gray-50 p-6 rounded-xl cascade delay-300 info-card"
+              >
+                <div class="icon-wrapper bg-green-100 text-green-700">🌾</div>
+                <h3
+                  class="text-2xl font-bold mb-3 text-[#3e423e]"
+                  data-lang-key="agriTamilNaduTitle"
+                >
+                  தமிழ்நாடு: விவசாய நிலச் சட்டங்கள்
+                </h3>
+                <p class="mb-4" data-lang-key="agriTamilNaduDesc">
+                  தமிழ்நாடு நில சீர்திருத்தங்கள் (நில உச்சவரம்பு நிர்ணயம்)
+                  சட்டம், 1961-ன் படி:
+                </p>
+                <div class="flex justify-around">
+                  <div class="text-center">
+                    <p
+                      class="stat-number text-5xl font-bold text-[#118AB2]"
+                      data-lang-key="agriLimit15"
+                    >
+                      15
+                    </p>
+                    <p class="font-semibold" data-lang-key="agriLimitAcres">
+                      ஏக்கர்கள்
+                    </p>
+                    <p
+                      class="text-sm text-gray-600"
+                      data-lang-key="agriLimitFamily"
+                    >
+                      5 பேர் கொண்ட குடும்பத்திற்கு
+                    </p>
+                  </div>
+                  <div class="text-center">
+                    <p
+                      class="stat-number text-5xl font-bold text-[#118AB2]"
+                      data-lang-key="agriLimit30"
+                    >
+                      30
+                    </p>
+                    <p class="font-semibold" data-lang-key="agriLimitAcres2">
+                      ஏக்கர்கள்
+                    </p>
+                    <p
+                      class="text-sm text-gray-600"
+                      data-lang-key="agriLimitOverall"
+                    >
+                      அதிகபட்ச உச்சவரம்பு
+                    </p>
+                  </div>
+                </div>
+                <a
+                  href="https://prsindia.org/files/bills_acts/acts_states/tamil-nadu/1961/1961TN58.pdf"
+                  target="_blank"
+                  class="mt-4 inline-block text-sm text-[#118AB2] hover:underline"
+                  data-lang-key="viewActLink"
+                  >மேலும் தகவலுக்கு</a
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- புதிய பகுதி: விவசாயம் அல்லாத மற்றும் குடியிருப்பு நிலங்கள் -->
+        <section id="tab-non-agri" class="tab-content w-full">
+          <div
+            class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 non-agri-background w-full max-w-4xl mx-auto flex flex-col justify-center transition duration-300 ease-in-out hover:shadow-2xl"
+          >
+            <h2
+              class="text-3xl font-bold text-center mb-8 cascade delay-100"
+              data-lang-key="nonAgriSectionTitle"
+            >
+              <span class="text-4xl mr-3">🏙️</span>பகுதி 1.5: நகரங்களின்
+              வளர்ச்சி - விவசாயம் அல்லாத மற்றும் குடியிருப்பு நிலங்கள்
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-8 items-center flex-grow">
+              <div class="cascade delay-200">
+                <h3
+                  class="text-2xl font-bold mb-4"
+                  data-lang-key="landConversionTitle"
+                >
+                  <span class="mr-2">🔄</span>நில வகை மாற்றம் மற்றும்
+                  மண்டலப்படுத்தல்
+                </h3>
+                <p class="mb-4" data-lang-key="landConversionDesc">
+                  விவசாய நிலங்களை குடியிருப்பு அல்லது வணிகப் பயன்பாட்டிற்காக
+                  மாற்றுவதற்கு குறிப்பிட்ட சட்ட மற்றும் திட்டமிடல் அனுமதிகள்
+                  தேவை. மண்டல விதிகளுக்கு இணங்குவது, நகர வளர்ச்சி மற்றும்
+                  உள்கட்டமைப்பை ஒழுங்குபடுத்துவதற்கு முக்கியமாகும்.
+                </p>
+                <div class="bg-red-50 p-4 rounded-lg info-card">
+                  <h4 class="font-bold" data-lang-key="townPlanningTitle">
+                    <span class="mr-2">🏛️</span>நகர மற்றும் கிராம திட்டமிடல்
+                  </h4>
+                  <p data-lang-key="townPlanningDesc">
+                    தமிழ்நாடு நகர மற்றும் கிராம திட்டமிடல் சட்டம், 1971, இந்த
+                    வகை நிலங்களின் பயன்பாடு, வளர்ச்சி மற்றும் விற்பனையை
+                    ஒழுங்குபடுத்துகிறது.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="text-center bg-gray-50 p-6 rounded-xl cascade delay-300 info-card"
+              >
+                <div class="icon-wrapper bg-red-100 text-red-700">🏗️</div>
+                <h3
+                  class="text-2xl font-bold mb-3 text-[#E63946]"
+                  data-lang-key="nonAgriRulesTitle"
+                >
+                  தமிழ்நாடு: நில மேம்பாட்டு விதிகள்
+                </h3>
+                <p class="mb-4" data-lang-key="nonAgriRulesDesc">
+                  தமிழ்நாட்டில் விவசாயம் அல்லாத மற்றும் குடியிருப்பு நிலங்கள்
+                  தொடர்பான சில முக்கிய விதிகள்:
+                </p>
+                <ul class="space-y-2 text-left text-gray-700">
+                  <li class="flex items-start" data-lang-key="nonAgriRule1">
+                    <span class="text-red-500 mr-2 mt-1">✓</span>**பயன்பாடு
+                    மாற்றம்:** விவசாய நிலத்தை குடியிருப்பு/வணிக நிலமாக மாற்ற
+                    அரசு அனுமதி அவசியம்.
+                  </li>
+                  <li class="flex items-start" data-lang-key="nonAgriRule2">
+                    <span class="text-red-500 mr-2 mt-1">✓</span
+                    >**மண்டலப்படுத்தல்:** நிலம் அமைந்துள்ள மண்டலத்தின் (Zone)
+                    அடிப்படையில் அதன் பயன்பாடு தீர்மானிக்கப்படுகிறது.
+                  </li>
+                  <li class="flex items-start" data-lang-key="nonAgriRule3">
+                    <span class="text-red-500 mr-2 mt-1">✓</span
+                    >**உள்கட்டமைப்பு:** நில மேம்பாட்டிற்கு சாலைகள், நீர்,
+                    வடிகால் போன்ற அத்தியாவசிய உள்கட்டமைப்பு வசதிகள் தேவை.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- பகுதி 2: அறிவின் கதை -->
+        <section id="tab-knowledge" class="tab-content w-full">
+          <div
+            class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 siddha-background w-full max-w-4xl mx-auto flex flex-col justify-center transition duration-300 ease-in-out hover:shadow-2xl"
+          >
+            <h2
+              class="text-3xl font-bold text-center mb-8 cascade delay-100"
+              data-lang-key="knowledgeSectionTitle"
+            >
+              <span class="text-4xl mr-3">🧠</span>பகுதி 2: அறிவின் கதை -
+              பாரம்பரியத்தைப் பாதுகாத்தல்
+            </h2>
+
+            <div
+              class="grid md:grid-cols-5 gap-8 items-center flex-grow cascade delay-200"
+            >
+              <div
+                class="md:col-span-3 bg-white/80 backdrop-blur-sm p-6 rounded-xl info-card"
+              >
+                <h3
+                  class="text-xl font-bold mb-4"
+                  data-lang-key="docImportanceTitle"
+                >
+                  <span class="mr-2">💡</span>ஆவணப்படுத்துதலின் முக்கியத்துவம்
+                </h3>
+                <p
+                  class="text-slate-600 mb-4"
+                  data-lang-key="docImportanceDesc"
+                >
+                  நிலம் போலவே, பாரம்பரிய அறிவும் ஒரு விலைமதிப்பற்ற சொத்து.
+                  முறையான ஆவணப்படுத்துதல் இல்லாததால், சித்த மருத்துவம் போன்ற
+                  பழங்கால அறிவு அமைப்புகள் சுரண்டலுக்கு உள்ளாகின்றன.
+                </p>
+                <div class="grid grid-cols-2 gap-4 text-sm mt-4">
+                  <div class="benefit-tag" data-lang-key="docBenefit1"></div>
+                  <div class="benefit-tag" data-lang-key="docBenefit2"></div>
+                  <div class="benefit-tag" data-lang-key="docBenefit3"></div>
+                  <div class="benefit-tag" data-lang-key="docBenefit4"></div>
+                </div>
+              </div>
+              <div
+                class="md:col-span-2 text-center bg-white/80 backdrop-blur-sm p-6 rounded-xl info-card"
+              >
+                <h4
+                  class="font-bold text-center mb-2"
+                  data-lang-key="siddhaStatusTitle"
+                >
+                  <span class="mr-2">📊</span>சித்த மருத்துவ அறிவின் நிலை
+                </h4>
+                <div class="chart-container">
+                  <canvas id="siddhaChart"></canvas>
+                </div>
+                <p
+                  class="text-sm text-gray-600 mt-2"
+                  data-lang-key="siddhaStatusDesc"
+                >
+                  சரியான ஆவணங்கள் இல்லாததால், பெரும் பகுதி பாரம்பரிய அறிவு
+                  சுரண்டப்படும் அபாயத்தில் உள்ளது.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="bg-amber-50/80 backdrop-blur-sm p-6 rounded-xl mt-8 cascade delay-300"
+            >
+              <h3
+                class="text-2xl font-bold text-center text-[#EF476F] mb-6"
+                data-lang-key="turmericCaseTitle"
+              >
+                <span class="mr-2">🌿</span>வழக்கு ஆய்வு: மஞ்சள் காப்புரிமைப்
+                போர்
+              </h3>
+              <div class="timeline-container">
+                <!-- Item 1 -->
+                <div class="timeline-item left cascade delay-300">
+                  <div class="timeline-content">
+                    <h4
+                      class="font-bold text-lg mb-1"
+                      data-lang-key="turmericStep1Title"
+                    >
+                      பாரம்பரியப் பயன்பாடு
+                    </h4>
+                    <p
+                      class="text-sm text-gray-600"
+                      data-lang-key="turmericStep1Desc"
+                    >
+                      பல நூற்றாண்டுகளாக இந்தியாவில் மஞ்சள், காயங்களை குணப்படுத்த
+                      பயன்படுத்தப்பட்டது.
+                    </p>
+                  </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="timeline-item right cascade delay-400">
+                  <div class="timeline-content">
+                    <h4
+                      class="font-bold text-lg mb-1"
+                      data-lang-key="turmericStep2Title"
+                    >
+                      1995: அமெரிக்க காப்புரிமை
+                    </h4>
+                    <p
+                      class="text-sm text-gray-600"
+                      data-lang-key="turmericStep2Desc"
+                    >
+                      அமெரிக்க நிறுவனம் ஒன்று, மஞ்சளின் இந்த மருத்துவ
+                      குணத்திற்கு காப்புரிமை பெற்றது.
+                    </p>
+                  </div>
+                </div>
+                <!-- Item 3 -->
+                <div class="timeline-item left cascade delay-500">
+                  <div class="timeline-content">
+                    <h4
+                      class="font-bold text-lg mb-1"
+                      data-lang-key="turmericStep3Title"
+                    >
+                      இந்தியா வின் சவால் (CSIR)
+                    </h4>
+                    <p
+                      class="text-sm text-gray-600"
+                      data-lang-key="turmericStep3Desc"
+                    >
+                      இந்தியா, பண்டைய நூல்களை ஆதாரமாகக் காட்டி, இந்த அறிவு
+                      புதியதல்ல என்று வாதிட்டது.
+                    </p>
+                  </div>
+                </div>
+                <!-- Item 4 -->
+                <div class="timeline-item right cascade delay-600">
+                  <div class="timeline-content">
+                    <h4
+                      class="font-bold text-lg mb-1"
+                      data-lang-key="turmericStep4Title"
+                    >
+                      1997: வெற்றி & TKDL உருவாக்கம்
+                    </h4>
+                    <p
+                      class="text-sm text-gray-600"
+                      data-lang-key="turmericStep4Desc"
+                    >
+                      காப்புரிமை ரத்து செய்யப்பட்டது. இது பாரம்பரிய அறிவு
+                      டிஜிட்டல் நூலகம் (TKDL) உருவாக வழிவகுத்தது.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- பகுதி 3: அடுத்த படிகள் -->
+        <section id="tab-next-steps" class="tab-content w-full">
+          <div
+            class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 roadmap-background w-full max-w-4xl mx-auto flex flex-col justify-center transition duration-300 ease-in-out hover:shadow-2xl"
+          >
+            <h2
+              class="text-3xl font-bold text-center mb-8 cascade delay-100"
+              data-lang-key="nextStepsTitle"
+            >
+              <span class="text-4xl mr-3">🚀</span>திட்ட வரைபடம்
+            </h2>
+            <div class="flex flex-col space-y-8">
+              <!-- Phase 1 Flip Card -->
+              <div class="info-card-flip-container cascade delay-200">
+                <div class="info-card-flipper">
+                  <div class="info-card-front bg-gray-50 rounded-xl">
+                    <div class="icon-wrapper bg-blue-100 text-blue-700">🖥️</div>
+                    <h3
+                      class="text-xl font-bold mb-3 text-[#3e423e]"
+                      data-lang-key="phase1Title"
+                    >
+                      கட்டம் 1: தரவு டிஜிட்டல் மயமாக்கல்
+                    </h3>
+                    <p
+                      class="text-sm text-gray-600"
+                      data-lang-key="phase1Item1"
+                    >
+                      அனைத்து அசல் நிலப் பதிவுகளையும் சட்ட ஆவணங்களையும் ஸ்கேன்
+                      செய்து டிஜிட்டல் மயமாக்குதல்.
+                    </p>
+                  </div>
+                  <div class="info-card-back bg-gray-50 rounded-xl">
+                    <h3
+                      class="text-xl font-bold mb-3 text-[#3e423e]"
+                      data-lang-key="phase1Title"
+                    >
+                      கட்டம் 1: தரவு டிஜிட்டல் மயமாக்கல்
+                    </h3>
+                    <ul
+                      class="list-disc list-inside text-left text-gray-700 space-y-2"
+                    >
+                      <li data-lang-key="phase1Item1">
+                        அனைத்து அசல் நிலப் பதிவுகளையும் சட்ட ஆவணங்களையும் ஸ்கேன்
+                        செய்து டிஜிட்டல் மயமாக்குதல்.
+                      </li>
+                      <li data-lang-key="phase1Item2">
+                        டிஜிட்டல் மயமாக்கப்பட்ட தரவை மறைகுறியாக்கப்பட்ட,
+                        பாதுகாப்பான கிளவுட் சேவையகத்தில் சேமித்தல்.
+                      </li>
+                      <li data-lang-key="phase1Item3">
+                        எளிதாகவும் வேகமாகவும் மீட்டெடுப்பதற்காக ஒரு
+                        கட்டமைக்கப்பட்ட தரவுத்தளத்தை உருவாக்குதல்.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Phase 2 Flip Card -->
+              <div class="info-card-flip-container cascade delay-300">
+                <div class="info-card-flipper">
+                  <div class="info-card-front bg-gray-50 rounded-xl">
+                    <div class="icon-wrapper bg-yellow-100 text-yellow-700">
+                      🔒
+                    </div>
+                    <h3
+                      class="text-xl font-bold mb-3 text-[#118AB2]"
+                      data-lang-key="phase2Title"
+                    >
+                      கட்டம் 2: அசல் ஆவணப் பாதுகாப்பு
+                    </h3>
+                    <p
+                      class="text-sm text-gray-600"
+                      data-lang-key="phase2Item1"
+                    >
+                      அசல் ஆவணங்களை காலநிலை கட்டுப்படுத்தப்பட்ட, பாதுகாப்பான
+                      வசதியில் காப்பகப்படுத்துதல்.
+                    </p>
+                  </div>
+                  <div class="info-card-back bg-gray-50 rounded-xl">
+                    <h3
+                      class="text-xl font-bold mb-3 text-[#118AB2]"
+                      data-lang-key="phase2Title"
+                    >
+                      கட்டம் 2: அசல் ஆவணப் பாதுகாப்பு
+                    </h3>
+                    <ul
+                      class="list-disc list-inside text-left text-gray-700 space-y-2"
+                    >
+                      <li data-lang-key="phase2Item1">
+                        அசல் ஆவணங்களை காலநிலை கட்டுப்படுத்தப்பட்ட, பாதுகாப்பான
+                        வசதியில் காப்பகப்படுத்துதல்.
+                      </li>
+                      <li data-lang-key="phase2Item2">
+                        ஆவணங்களை சரிபார்க்க மற்றும் வெளியே எடுக்க ஒரு
+                        கண்காணிப்பு முறையை செயல்படுத்துதல்.
+                      </li>
+                      <li data-lang-key="phase2Item3">
+                        ஆவணங்களின் நேர்மையை உறுதிப்படுத்த கடுமையான அணுகல்
+                        நெறிமுறைகளை நிறுவுதல்.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Phase 3 Flip Card -->
+              <div class="info-card-flip-container cascade delay-400">
+                <div class="info-card-flipper">
+                  <div class="info-card-front bg-gray-50 rounded-xl">
+                    <div class="icon-wrapper bg-pink-100 text-pink-700">📱</div>
+                    <h3
+                      class="text-xl font-bold mb-3 text-[#EF476F]"
+                      data-lang-key="phase3Title"
+                    >
+                      கட்டம் 3: செயலி உருவாக்கம்
+                    </h3>
+                    <p
+                      class="text-sm text-gray-600"
+                      data-lang-key="phase3Item1"
+                    >
+                      பயனருக்கு ஏற்ற மொபைல் மற்றும் வலைச் செயலியை உருவாக்குதல்.
+                    </p>
+                  </div>
+                  <div class="info-card-back bg-gray-50 rounded-xl">
+                    <h3
+                      class="text-xl font-bold mb-3 text-[#EF476F]"
+                      data-lang-key="phase3Title"
+                    >
+                      கட்டம் 3: செயலி உருவாக்கம்
+                    </h3>
+                    <ul
+                      class="list-disc list-inside text-left text-gray-700 space-y-2"
+                    >
+                      <li data-lang-key="phase3Item1">
+                        பயனருக்கு ஏற்ற மொபைல் மற்றும் வலைச் செயலியை
+                        உருவாக்குதல்.
+                      </li>
+                      <li data-lang-key="phase3Item2">
+                        ஆவணங்களைத் தேட, பார்க்க மற்றும் நிர்வகிக்க அம்சங்களை
+                        ஒருங்கிணைத்தல்.
+                      </li>
+                      <li data-lang-key="phase3Item3">
+                        பயனர்களுக்கான பங்கு அடிப்படையிலான அணுகல் கட்டுப்பாட்டை
+                        செயல்படுத்துதல்.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mt-10 text-center text-gray-600 max-w-3xl mx-auto cascade delay-500"
+            >
+              <p data-lang-key="roadmapConclusion">
+                இந்த வரைபடம், முக்கியமான நிலம் மற்றும் சட்ட ஆவணங்களை
+                நிர்வகிப்பதற்கான ஒரு விரிவான, பாதுகாப்பான மற்றும் அணுகக்கூடிய
+                அமைப்பை உறுதிசெய்கிறது, சிக்கலான காகித அடிப்படையிலான செயல்முறையை
+                ஒரு நெறிப்படுத்தப்பட்ட டிஜிட்டல் பணிப்பாய்வாக மாற்றுகிறது.
+              </p>
+            </div>
+          </div>
+        </section>
+        <!-- Summary Tab -->
+        <section id="tab-summary" class="tab-content w-full">
+          <div
+            class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 summary-background w-full max-w-4xl mx-auto flex flex-col justify-center transition duration-300 ease-in-out hover:shadow-2xl"
+          >
+            <h2
+              class="text-3xl font-bold text-center mb-6 cascade delay-100"
+              data-lang-key="summaryTitle"
+            >
+              <span class="text-4xl mr-3">📋</span>செயல்பாட்டு சுருக்கம்
+            </h2>
+            <p
+              class="text-center text-lg text-gray-700 mb-8 max-w-3xl mx-auto cascade delay-200"
+              data-lang-key="summaryIntro"
+            >
+              இந்த முன்மொழிவு, நமது நாட்டின் முக்கியமான நில ஆவணங்கள் மற்றும்
+              பாரம்பரிய அறிவைப் பாதுகாப்பதற்கும், நிர்வகிப்பதற்கும் ஒரு நவீன,
+              பாதுகாப்பான மற்றும் திறமையான அமைப்பை உருவாக்குவதற்கான ஒரு விரிவான
+              திட்டத்தை கோடிட்டுக் காட்டுகிறது.            </p>
+            <div class="grid md:grid-cols-2 gap-8 text-left">
+              <div class="bg-red-50 p-6 info-card cascade delay-300 rounded-xl">
+                <h3
+                  class="text-xl font-bold mb-3 text-[#E63946]"
+                  data-lang-key="summaryProblemTitle"
+                >
+                  <span class="mr-2">🎯</span>சவால்
+                </h3>
+                <p class="text-gray-700" data-lang-key="summaryProblemText">
+                  அசல் ஆவணங்கள் சேதம், இழப்பு மற்றும் மோசடிக்கு ஆளாகின்றன. அதே
+                  நேரத்தில், சித்த மருத்துவம் போன்ற பாரம்பரிய அறிவு, முறையான
+                  ஆவணப்படுத்தல் இல்லாததால், அறிவுத் திருட்டுக்கு உள்ளாகிறது.
+                  இந்த இரண்டு சொத்துக்களையும் பாதுகாப்பது நமது கலாச்சார மற்றும்
+                  பொருளாதார ஸ்திரத்தன்மைக்கு அவசியமானது.
+                </p>
+              </div>
+              <div
+                class="bg-green-50 p-6 info-card cascade delay-400 rounded-xl"
+              >
+                <h3
+                  class="text-xl font-bold mb-3 text-[#19ca7a]"
+                  data-lang-key="summarySolutionTitle"
+                >
+                  <span class="mr-2">💡</span>எங்கள் தீர்வு
+                </h3>
+                <div class="text-gray-700">
+                  <p data-lang-key="summarySolutionIntroText">
+                    எங்கள் மூன்று-கட்ட தீர்வு இந்த சவால்களை நேரடியாக
+                    எதிர்கொள்கிறது:
+                  </p>
+                  <ul class="mt-2 space-y-1 text-[#3e423e]">
+                    <li
+                      class="flex items-start"
+                      data-lang-key="summarySolution1"
+                    >
+                      <span class="text-[#19ca7a] mr-2 mt-1">✓</span
+                      ><strong>டிஜிட்டல் மயமாக்கல்:</strong> அனைத்து
+                      ஆவணங்களையும் டிஜிட்டல் மயமாக்கி, பாதுகாப்பான சேவையகத்தில்
+                      சேமித்தல்.
+                    </li>
+                    <li
+                      class="flex items-start"
+                      data-lang-key="summarySolution2"
+                    >
+                      <span class="text-[#19ca7a] mr-2 mt-1">✓</span
+                      ><strong>பாதுகாப்பு:</strong> அசல் ஆவணங்களை பாதுகாப்பான
+                      வசதியில் காப்பகப்படுத்துதல்.
+                    </li>
+                    <li
+                      class="flex items-start"
+                      data-lang-key="summarySolution3"
+                    >
+                      <span class="text-[#19ca7a] mr-2 mt-1">✓</span
+                      ><strong>அணுகல்:</strong> அனைத்து தரவையும் எளிதாக அணுக ஒரு
+                      பிரத்யேக செயலியை உருவாக்குதல்.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <p 
+              class="text-center text-gray-600 mt-10 cascade delay-500" 
+              data-lang-key="summaryConclusion"
+            >
+              இந்தத் திட்டம், நமது விலைமதிப்பற்ற சொத்துக்களைப் பாதுகாப்பது
+              மட்டுமல்லாமல், அவற்றை அணுகுவதையும், நிர்வகிப்பதையும்
+              எளிதாக்குகிறது, இது ஒரு வெளிப்படையான மற்றும் திறமையான
+              எதிர்காலத்திற்கு வழிவகுக்கிறது.
+            </p>
+            <div class="max-w-4xl mx-auto p-4 bg-white rounded-lg shadow-md mt-10 cascade delay-600">
+              <h2 class="text-2xl font-bold text-center mb-6">POC for the app</h2>
+              <div class="relative" style="padding-bottom: 56.25%; height: 0;">
+                <video controls class="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg">
+                  <source src="video/proto.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <p class="text-center text-gray-600 mt-4">
+                This video demonstrates the Proof of Concept for the application.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- பகுதி 4: நன்றி மற்றும் தொடர்பு -->
+        <section id="tab-contact" class="tab-content w-full">
+          <div
+            class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 contact-background w-full max-w-4xl mx-auto flex flex-col justify-center transition duration-300 ease-in-out hover:shadow-2xl"
+          >
+            <h2
+              class="text-3xl font-bold text-center mb-6 cascade delay-100"
+              data-lang-key="contactTitle"
+            >
+              <span class="text-4xl mr-3">✉️</span>நன்றி மற்றும் தொடர்பு
+            </h2>
+            <p
+              class="text-center text-lg text-gray-700 mb-8 max-w-2xl mx-auto cascade delay-200"
+              data-lang-key="thankYouMessage"
+            >
+              இந்த முன்மொழிவை மதிப்பாய்வு செய்ய நேரம் ஒதுக்கியதற்கு நன்றி.
+              இந்தத் திட்டம் நமது மதிப்புமிக்க நிலம் மற்றும் அறிவுசார்
+              சொத்துக்களைப் பாதுகாப்பதில் ஒரு குறிப்பிடத்தக்க படியாகும்.
+            </p>
+            <div
+              class="grid md:grid-cols-2 gap-8 text-left bg-gray-50/50 p-6 rounded-xl border border-gray-200 cascade delay-300"
+            >
+              <div>
+                <h3
+                  class="text-xl font-bold mb-4 text-[#118AB2]"
+                  data-lang-key="contactInfoTitle"
+                >
+                  தொடர்பு தகவல்
+                </h3>
+                <ul class="space-y-3 text-gray-800">
+                  <li class="flex items-center">
+                    <span class="text-2xl mr-3">📧</span>
+                    <a
+                      href="mailto:info@wedo.com"
+                      class="hover:underline"
+                      data-lang-key="contactEmail"
+                      >subbiah.wedoo@gmail.com</a
+                    >
+                  </li>
+                  <li class="flex items-center">
+                    <span class="text-2xl mr-3">📞</span>
+                    <span data-lang-key="contactPhone">+91 95442 18899</span>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3
+                  class="text-xl font-bold mb-4 text-[#118AB2]"
+                  data-lang-key="addressTitle"
+                >
+                  அலுவலக முகவரி
+                </h3>
+                <address class="not-italic text-gray-800">
+                  <p class="flex items-start">
+                    <span class="text-2xl mr-3">📍</span
+                    ><span data-lang-key="addressLine1"
+                      >WEDOO CONTRACTORS AND MANUFACTURERS</span
+                    >
+                  </p>
+                  <p class="ml-9" data-lang-key="addressLine2">
+                    OLD NO: 16 NEW NO: 2 D.R MALIGAI, POES ROAD, 3 RD STREET,
+                    TEYNAMPET
+                  </p>
+                  <p class="ml-9" data-lang-key="addressLine3">
+                    Chennai, Tamil Nadu - 600018
+                  </p>
+                </address>
+              </div>
+            </div>
+            <p
+              class="text-center text-sm text-gray-500 mt-8 cascade delay-400"
+              data-lang-key="followUpNote"
+            >
+              மேலும் விவாதிக்க அல்லது ஏதேனும் கேள்விகளுக்கு, தயவுசெய்து எங்களைத்
+              தொடர்பு கொள்ளவும்.
+            </p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer class="text-center py-4 mt-4 border-t border-gray-200 bg-gray-50">
+      <p class="text-xs text-gray-500" data-lang-key="footerText">
+        © 2024. Copyrighted and powered by we do.
+      </p>
+    </footer>
+
+    <!-- Link to external JavaScript file -->
+    <script src="./script.js"></script>
+  </body>
 </html>

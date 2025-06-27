@@ -1,0 +1,483 @@
+/* Adding custom base styles */
+body {
+  font-family: "Noto Sans Tamil", "Noto Sans", sans-serif;
+  background-color: #f8fafc; /* bg-gray-50 */
+  background-image:
+    linear-gradient(
+      to bottom,
+      rgba(239, 246, 255, 0.5),
+      transparent 50vh
+    ),
+    url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='3' cy='3' r='0.5' fill='%23000' opacity='0.05'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* Sticky Tab Navigation */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 10; /* Ensure it stays above other content */
+  background-color: #f8fafc; /* Match body background to prevent content showing through */
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-bold {
+  font-family: "Arima", "Noto Sans Tamil", cursive;
+  font-weight: 700;
+}
+
+/* Tab Navigation Styling */
+.tab-button {
+  position: relative;
+  transition: color 0.3s ease-in-out;
+  padding-bottom: 1rem; /* More space for the underline */
+  border-bottom: 3px solid transparent;
+}
+
+/* Define tab colors using CSS variables for easier maintenance */
+.tab-button[data-tab="land"] {
+  --tab-color: #3e423e;
+}
+.tab-button[data-tab="non-agri"] {
+  --tab-color: #e63946;
+}
+.tab-button[data-tab="knowledge"] {
+  --tab-color: #ffd166;
+}
+.tab-button[data-tab="next-steps"] {
+  --tab-color: #ef476f;
+}
+.tab-button[data-tab="summary"] {
+  --tab-color: #19ca7a;
+}
+.tab-button[data-tab="contact"] {
+  --tab-color: #118ab2;
+}
+
+/* --- Tab Underline & Hover/Active Color --- */
+.tab-button::after {
+  content: "";
+  position: absolute;
+  bottom: -2px; /* Align with the nav border */
+  left: 0;
+  width: 100%;
+  height: 3px;
+  transform: scaleX(0);
+  background-color: var(--tab-color); /* Use the variable */
+  transform-origin: bottom right;
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Animate the underline on hover or when active */
+.tab-button:hover::after,
+.tab-button.active::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Set the text color for each tab when active or hovered using the variable */
+.tab-button.active,
+.tab-button:hover {
+  color: var(--tab-color);
+}
+
+/* Tab Content Transitions */
+.tab-content {
+  display: none;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Flip Card Styling for Next Steps */
+.info-card-flip-container {
+  perspective: 1000px; /* Establish a 3D perspective for the flip */
+  width: 100%;
+  position: relative; /* For the flipper */
+  border-radius: 1rem;
+  /* The box-shadow and border are applied directly in HTML for these cards */
+  transition: all 0.3s ease-in-out; /* For hover effects on the container */
+}
+
+.info-card-flip-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(62, 66, 62, 0.1); /* Using secondary color for shadow */
+}
+
+.info-card-flipper {
+  display: grid; /* Use grid to allow content to define height */
+  width: 100%;
+  transition: transform 0.8s; /* Smooth flip animation */
+  transform-style: preserve-3d; /* Keep children in 3D space */
+}
+
+.info-card-flip-container:hover .info-card-flipper {
+  transform: rotateY(180deg);
+}
+
+.info-card-front,
+.info-card-back {
+  grid-area: 1 / 1; /* Place in the same grid cell */
+  width: 100%;
+  backface-visibility: hidden; /* Hide the back of the element when facing away */
+  padding: 1.5rem; /* p-6 */
+  border-radius: 1rem; /* rounded-xl */
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1); /* shadow-md */
+  border: 1px solid #e2e8f0; /* border-gray-200 */
+}
+
+.info-card-front {
+  background-color: #f8fafc; /* bg-gray-50 */
+  transform: rotateY(
+    0deg
+  ); /* Ensure front is visible initially in grid layout */
+  z-index: 2;
+  justify-content: center;
+  align-items: center;
+}
+
+.info-card-back {
+  background-color: #f8fafc; /* bg-gray-50 */
+  transform: rotateY(180deg); /* Initially rotate the back side */
+  z-index: 1;
+  text-align: left; /* Adjust text alignment for lists */
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.icon-wrapper {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin: 0 auto 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Adjust list styling for the back face */
+.info-card-back ul {
+  list-style-type: disc; /* Ensure disc for lists */
+  padding-left: 1.5rem; /* Indent list items */
+}
+
+.stat-number {
+  transition: color 0.3s ease;
+}
+
+/* Backgrounds with subtle gradients and images */
+.land-background,
+.non-agri-background,
+.siddha-background,
+.roadmap-background,
+.summary-background,
+.contact-background {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  color: #333; /* Darken text for better readability on images */
+  background-attachment: fixed; /* This creates the parallax effect */
+}
+
+/* --- Background Images for Sections --- */
+/* You can replace these placeholder URLs with your own images */
+.land-background {
+  background-image: url('./images/agricultural-land.avif');
+}
+.non-agri-background {
+  background-image: url('./images/land-development.avif');
+}
+.siddha-background {
+  background-image: url('./images/siddha.jpg');
+}
+.roadmap-background {
+  background-image: url("https://images..com/photo-1542332213-9b5a5a3236d3?auto=format&fit=crop&q=80");
+}
+.summary-background {
+  background-image: url("https://images.unsplash.com/photo-1581092580497-c3d25cb63492?auto=format&fit=crop&q=80");
+}
+.contact-background {
+  background-image: url("https://images.unsplash.com/photo-1557682250-33bd709cbe85?auto=format&fit=crop&q=80");
+}
+
+/* Overlay for Land and Urban Land tabs */
+.land-background::before,
+.non-agri-background::before,
+.siddha-background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(4px);
+  z-index: 0;
+}
+
+/* Overlay for other tabs */
+.roadmap-background::before,
+.summary-background::before,
+.contact-background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.6
+  ); /* Reduced opacity for more visible image */
+  backdrop-filter: blur(4px);
+  z-index: 0;
+}
+
+/* Ensure content is above the pseudo-element */
+.land-background > *,
+.non-agri-background > *,
+.siddha-background > *,
+.roadmap-background > *,
+.summary-background > *,
+.contact-background > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Watermark pattern */
+.land-background::after,
+.non-agri-background::after,
+.siddha-background::after,
+.roadmap-background::after,
+.summary-background::after,
+.contact-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("logo.png");
+  background-repeat: repeat;
+  opacity: 0.05;
+  z-index: 0;
+  pointer-events: none; /* Make sure it doesn't interfere with mouse events */
+  border-radius: 1rem; /* Match the container's border-radius */
+}
+
+/* --- Interactive Benefit Tags --- */
+.benefit-tag {
+  background-color: rgba(25, 202, 122, 0.1); /* Light primary color */
+  color: #0d6e43; /* Dark primary color */
+  padding: 0.5rem 1rem;
+  border-radius: 9999px; /* pill shape */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+  cursor: default;
+  border: 1px solid rgba(25, 202, 122, 0.2);
+}
+
+.benefit-tag:hover {
+  transform: scale(1.05) translateY(-2px);
+  background-color: rgba(25, 202, 122, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.benefit-tag span {
+  transition: transform 0.3s ease;
+}
+
+.benefit-tag:hover span {
+  transform: rotate(-10deg) scale(1.2);
+}
+
+/* --- New Vertical Timeline Design --- */
+.timeline-container {
+  position: relative;
+  padding: 2rem 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* The vertical line */
+.timeline-container::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  background-color: #ffd166; /* amber-300 */
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -2px;
+  border-radius: 2px;
+}
+
+/* Container for each timeline item */
+.timeline-item {
+  padding: 10px 40px;
+  position: relative;
+  width: 50%;
+}
+
+/* The circle on the timeline */
+.timeline-item::after {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  right: -12px;
+  background-color: white;
+  border: 4px solid #ef476f; /* A contrasting color */
+  top: 25px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Position items to the left */
+.timeline-item.left {
+  left: 0;
+}
+
+/* Position items to the right */
+.timeline-item.right {
+  left: 50%;
+}
+
+/* Arrow pointing from circle to content (left) */
+.timeline-item.left::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 30px;
+  width: 0;
+  z-index: 1;
+  right: 30px;
+  border: medium solid white;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent white;
+}
+
+/* Arrow pointing from circle to content (right) */
+.timeline-item.right::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 30px;
+  width: 0;
+  z-index: 1;
+  left: 30px;
+  border: medium solid white;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent white transparent transparent;
+}
+
+/* Fix the circle for right-sided items */
+.timeline-item.right::after {
+  left: -12px;
+}
+
+/* The actual content card */
+.timeline-content {
+  padding: 1.25rem; /* p-5 */
+  background-color: white;
+  position: relative;
+  border-radius: 0.5rem; /* rounded-lg */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1); /* shadow-md */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+}
+
+/* Scroll-triggered Animations */
+.cascade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+    transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.cascade.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay-100 {
+  transition-delay: 0.1s;
+}
+.delay-200 {
+  transition-delay: 0.2s;
+}
+.delay-300 {
+  transition-delay: 0.3s;
+}
+.delay-400 {
+  transition-delay: 0.4s;
+}
+.delay-500 {
+  transition-delay: 0.5s;
+}
+.delay-600 {
+  transition-delay: 0.6s;
+}
+
+/* Chart container to ensure responsiveness */
+.chart-container {
+  position: relative;
+  height: 200px;
+  width: 100%;
+}
+
+/* Responsive adjustments for the timeline */
+@media screen and (max-width: 768px) {
+  .timeline-container::after {
+    left: 31px;
+  }
+
+  .timeline-item {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
+  }
+
+  .timeline-item.left,
+  .timeline-item.right {
+    left: 0;
+  }
+
+  .timeline-item.left::before,
+  .timeline-item.right::before {
+    left: 60px;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
+  }
+
+  .timeline-item.left::after,
+  .timeline-item.right::after {
+    left: 19px;
+  }
+}

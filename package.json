@@ -1,0 +1,22 @@
+{
+  "name": "proposal",
+  "version": "1.0.0",
+  "main": "script.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "build:css": "tailwindcss -i ./style.css -o ./dist/tailwind.css --minify",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Krishna Kumar",
+  "license": "MIT",
+  "description": "",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.10",
+    "tailwindcss": "^4.1.10"
+  },
+  "dependencies": {
+    "chart.js": "^4.5.0"
+  }
+}
