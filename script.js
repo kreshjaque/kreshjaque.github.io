@@ -116,6 +116,9 @@ const languageContent = {
     summaryConclusion:
       "This project not only protects our invaluable assets but also streamlines their accessibility and management, paving the way for a more transparent and efficient future.",
     tabContact: "Thank You & Contact",
+    pocTitle: "POC for the app",
+    pocDescription:
+      "This video demonstrates the Proof of Concept for the application.",
     contactTitle: "Thank You & Contact",
     thankYouMessage:
       "Thank you for taking the time to review this proposal. This project represents a significant step forward in safeguarding our valuable land and intellectual assets.",
@@ -246,6 +249,9 @@ const languageContent = {
     summaryConclusion:
       "இந்தத் திட்டம், நமது விலைமதிப்பற்ற சொத்துக்களைப் பாதுகாப்பது மட்டுமல்லாமல், அவற்றை அணுகுவதையும், நிர்வகிப்பதையும் எளிதாக்குகிறது, இது ஒரு வெளிப்படையான மற்றும் திறமையான எதிர்காலத்திற்கு வழிவகுக்கிறது.",
     tabContact: "நன்றி",
+    pocTitle: "செயலி முன்மாதிரி (POC)",
+    pocDescription:
+      "இந்த வீடியோ செயலியின் செயல்பாட்டு முன்மாதிரியை விளக்குகிறது.",
     contactTitle: "நன்றி மற்றும் தொடர்பு",
     thankYouMessage:
       "இந்த முன்மொழிவை மதிப்பாய்வு செய்ய நேரம் ஒதுக்கியதற்கு நன்றி. இந்தத் திட்டம் நமது மதிப்புமிக்க நிலம் மற்றும் அறிவுசார் சொத்துக்களைப் பாதுகாப்பதில் ஒரு குறிப்பிடத்தக்க படியாகும்.",
@@ -417,4 +423,56 @@ document.addEventListener("DOMContentLoaded", function () {
   cascadeElements.forEach((element) => {
     observer.observe(element);
   });
+
+  // --- Video Slideshow Logic ---
+  const videoSlideshowContainer = document.getElementById("video-slideshow");
+  if (videoSlideshowContainer) {
+    // IMPORTANT: Add the paths to your videos in the video/ folder here
+    const videoSources = [
+      "video/v1.mp4",
+      "video/v2.mp4",
+      "video/v3.mp4",
+      "video/v4.mp4",
+    ];
+    let currentVideoIndex = 0;
+
+    // Preload videos for smoother transitions
+    videoSources.forEach((src) => {
+      const video = document.createElement("video");
+      video.src = src;
+      video.preload = "auto";
+    });
+
+    function playNextVideo() {
+      // Increment index, looping back to 0 if at the end
+      currentVideoIndex = (currentVideoIndex + 1) % videoSources.length;
+      const nextVideo = videoSlideshowContainer.children[currentVideoIndex];
+
+      // Fade out all videos, then fade in the next one
+      Array.from(videoSlideshowContainer.children).forEach((v) => {
+        v.style.opacity = "0";
+        v.pause();
+      });
+
+      nextVideo.style.opacity = "1";
+      nextVideo.currentTime = 0;
+      nextVideo.play().catch((error) => console.error("Video play failed:", error));
+    }
+
+    videoSources.forEach((src, index) => {
+      const video = document.createElement("video");
+      video.src = src;
+      video.muted = true; // Autoplay requires the video to be muted
+      video.playsInline = true;
+      video.className = "absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-500";
+      video.style.opacity = index === 0 ? "1" : "0"; // Show first video
+      video.addEventListener("ended", playNextVideo);
+      videoSlideshowContainer.appendChild(video);
+    });
+
+    // Start the first video
+    if (videoSlideshowContainer.children.length > 0) {
+      videoSlideshowContainer.children[0].play().catch((error) => console.error("Initial video play failed:", error));
+    }
+  }
 });

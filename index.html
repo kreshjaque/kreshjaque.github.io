@@ -45,46 +45,70 @@
 
     <!-- Tab Navigation (moved outside the container) -->
     <nav class="mx-auto max-w-5xl mb-8 md:mb-12 border-b border-gray-300">
-      <div class="flex justify-center space-x-4">
+      <div class="flex justify-center space-x-4" role="tablist" aria-label="Content sections">
         <button
+          id="tab-btn-land"
           class="tab-button px-6 py-3 text-lg font-semibold text-gray-600 active"
           data-tab="land"
           data-lang-key="tabLand"
+          role="tab"
+          aria-controls="tab-land"
+          aria-selected="true"
         >
           பகுதி 1: நிலம்
         </button>
         <button
+          id="tab-btn-non-agri"
           class="tab-button px-6 py-3 text-lg font-semibold text-gray-600"
           data-tab="non-agri"
           data-lang-key="tabNonAgri"
+          role="tab"
+          aria-controls="tab-non-agri"
+          aria-selected="false"
         >
           பகுதி 1.5: நகர நிலம்
         </button>
         <button
+          id="tab-btn-knowledge"
           class="tab-button px-6 py-3 text-lg font-semibold text-gray-600"
           data-tab="knowledge"
           data-lang-key="tabKnowledge"
+          role="tab"
+          aria-controls="tab-knowledge"
+          aria-selected="false"
         >
           பகுதி 2: அறிவு
         </button>
         <button
+          id="tab-btn-next-steps"
           class="tab-button px-6 py-3 text-lg font-semibold text-gray-600"
           data-tab="next-steps"
           data-lang-key="tabNextSteps"
+          role="tab"
+          aria-controls="tab-next-steps"
+          aria-selected="false"
         >
           அடுத்த படிகள்
         </button>
         <button
+          id="tab-btn-summary"
           class="tab-button px-6 py-3 text-lg font-semibold text-gray-600"
           data-tab="summary"
           data-lang-key="tabSummary"
+          role="tab"
+          aria-controls="tab-summary"
+          aria-selected="false"
         >
           சுருக்கம்
         </button>
         <button
+          id="tab-btn-contact"
           class="tab-button px-6 py-3 text-lg font-semibold text-gray-600"
           data-tab="contact"
           data-lang-key="tabContact"
+          role="tab"
+          aria-controls="tab-contact"
+          aria-selected="false"
         >
           நன்றி
         </button>
@@ -96,8 +120,8 @@
 
       <!-- Tab Content Areas -->
       <main class="flex-grow flex flex-col items-center justify-center">
-        <!-- பகுதி 1: நிலத்தின் கதை -->
-        <section id="tab-land" class="tab-content active w-full">
+        <!-- பகுதி 1: நிலத்தின் கதை -->>
+        <section id="tab-land" class="tab-content active w-full" role="tabpanel" aria-labelledby="tab-btn-land">
           <div
             class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 land-background w-full max-w-4xl mx-auto flex flex-col justify-center transition duration-300 ease-in-out hover:shadow-2xl"
           >
@@ -105,7 +129,7 @@
               class="text-3xl font-bold text-center mb-8 cascade delay-100"
               data-lang-key="landSectionTitle"
             >
-              <span class="text-4xl mr-3">🗺️</span>பகுதி 1: நிலத்தின் கதை -
+              <span class="text-4xl mr-3" aria-hidden="true">🗺️</span>பகுதி 1: நிலத்தின் கதை -
               உரிமையைப் பாதுகாத்தல்
             </h2>
 
@@ -125,7 +149,7 @@
                 </p>
                 <div class="bg-cyan-50 p-4 rounded-lg info-card">
                   <h4 class="font-bold" data-lang-key="stateLawsTitle">
-                    <span class="mr-2">📜</span>மாநில வாரியான சட்டங்கள்
+                    <span class="mr-2" aria-hidden="true">📜</span>மாநில வாரியான சட்டங்கள்
                   </h4>
                   <p data-lang-key="stateLawsDesc">
                     இந்தியாவில் நிலம் என்பது மாநில அரசின் அதிகார வரம்புக்குள்
@@ -137,7 +161,7 @@
               <div
                 class="text-center bg-gray-50 p-6 rounded-xl cascade delay-300 info-card"
               >
-                <div class="icon-wrapper bg-green-100 text-green-700">🌾</div>
+                <div class="icon-wrapper bg-green-100 text-green-700" aria-hidden="true">🌾</div>
                 <h3
                   class="text-2xl font-bold mb-3 text-[#3e423e]"
                   data-lang-key="agriTamilNaduTitle"
@@ -197,7 +221,7 @@
         </section>
 
         <!-- புதிய பகுதி: விவசாயம் அல்லாத மற்றும் குடியிருப்பு நிலங்கள் -->
-        <section id="tab-non-agri" class="tab-content w-full">
+        <section id="tab-non-agri" class="tab-content w-full" role="tabpanel" aria-labelledby="tab-btn-non-agri">
           <div
             class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 non-agri-background w-full max-w-4xl mx-auto flex flex-col justify-center transition duration-300 ease-in-out hover:shadow-2xl"
           >
@@ -205,7 +229,7 @@
               class="text-3xl font-bold text-center mb-8 cascade delay-100"
               data-lang-key="nonAgriSectionTitle"
             >
-              <span class="text-4xl mr-3">🏙️</span>பகுதி 1.5: நகரங்களின்
+              <span class="text-4xl mr-3" aria-hidden="true">🏙️</span>பகுதி 1.5: நகரங்களின்
               வளர்ச்சி - விவசாயம் அல்லாத மற்றும் குடியிருப்பு நிலங்கள்
             </h2>
 
@@ -215,7 +239,7 @@
                   class="text-2xl font-bold mb-4"
                   data-lang-key="landConversionTitle"
                 >
-                  <span class="mr-2">🔄</span>நில வகை மாற்றம் மற்றும்
+                  <span class="mr-2" aria-hidden="true">🔄</span>நில வகை மாற்றம் மற்றும்
                   மண்டலப்படுத்தல்
                 </h3>
                 <p class="mb-4" data-lang-key="landConversionDesc">
@@ -226,7 +250,7 @@
                 </p>
                 <div class="bg-red-50 p-4 rounded-lg info-card">
                   <h4 class="font-bold" data-lang-key="townPlanningTitle">
-                    <span class="mr-2">🏛️</span>நகர மற்றும் கிராம திட்டமிடல்
+                    <span class="mr-2" aria-hidden="true">🏛️</span>நகர மற்றும் கிராம திட்டமிடல்
                   </h4>
                   <p data-lang-key="townPlanningDesc">
                     தமிழ்நாடு நகர மற்றும் கிராம திட்டமிடல் சட்டம், 1971, இந்த
@@ -238,7 +262,7 @@
               <div
                 class="text-center bg-gray-50 p-6 rounded-xl cascade delay-300 info-card"
               >
-                <div class="icon-wrapper bg-red-100 text-red-700">🏗️</div>
+                <div class="icon-wrapper bg-red-100 text-red-700" aria-hidden="true">🏗️</div>
                 <h3
                   class="text-2xl font-bold mb-3 text-[#E63946]"
                   data-lang-key="nonAgriRulesTitle"
@@ -251,18 +275,18 @@
                 </p>
                 <ul class="space-y-2 text-left text-gray-700">
                   <li class="flex items-start" data-lang-key="nonAgriRule1">
-                    <span class="text-red-500 mr-2 mt-1">✓</span>**பயன்பாடு
-                    மாற்றம்:** விவசாய நிலத்தை குடியிருப்பு/வணிக நிலமாக மாற்ற
+                    <span class="text-red-500 mr-2 mt-1">✓</span><strong>பயன்பாடு
+                    மாற்றம்:</strong> விவசாய நிலத்தை குடியிருப்பு/வணிக நிலமாக மாற்ற
                     அரசு அனுமதி அவசியம்.
                   </li>
                   <li class="flex items-start" data-lang-key="nonAgriRule2">
                     <span class="text-red-500 mr-2 mt-1">✓</span
-                    >**மண்டலப்படுத்தல்:** நிலம் அமைந்துள்ள மண்டலத்தின் (Zone)
+                    ><strong>மண்டலப்படுத்தல்:</strong> நிலம் அமைந்துள்ள மண்டலத்தின் (Zone)
                     அடிப்படையில் அதன் பயன்பாடு தீர்மானிக்கப்படுகிறது.
                   </li>
                   <li class="flex items-start" data-lang-key="nonAgriRule3">
                     <span class="text-red-500 mr-2 mt-1">✓</span
-                    >**உள்கட்டமைப்பு:** நில மேம்பாட்டிற்கு சாலைகள், நீர்,
+                    ><strong>உள்கட்டமைப்பு:</strong> நில மேம்பாட்டிற்கு சாலைகள், நீர்,
                     வடிகால் போன்ற அத்தியாவசிய உள்கட்டமைப்பு வசதிகள் தேவை.
                   </li>
                 </ul>
@@ -272,7 +296,7 @@
         </section>
 
         <!-- பகுதி 2: அறிவின் கதை -->
-        <section id="tab-knowledge" class="tab-content w-full">
+        <section id="tab-knowledge" class="tab-content w-full" role="tabpanel" aria-labelledby="tab-btn-knowledge">
           <div
             class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 siddha-background w-full max-w-4xl mx-auto flex flex-col justify-center transition duration-300 ease-in-out hover:shadow-2xl"
           >
@@ -280,7 +304,7 @@
               class="text-3xl font-bold text-center mb-8 cascade delay-100"
               data-lang-key="knowledgeSectionTitle"
             >
-              <span class="text-4xl mr-3">🧠</span>பகுதி 2: அறிவின் கதை -
+              <span class="text-4xl mr-3" aria-hidden="true">🧠</span>பகுதி 2: அறிவின் கதை -
               பாரம்பரியத்தைப் பாதுகாத்தல்
             </h2>
 
@@ -294,7 +318,7 @@
                   class="text-xl font-bold mb-4"
                   data-lang-key="docImportanceTitle"
                 >
-                  <span class="mr-2">💡</span>ஆவணப்படுத்துதலின் முக்கியத்துவம்
+                  <span class="mr-2" aria-hidden="true">💡</span>ஆவணப்படுத்துதலின் முக்கியத்துவம்
                 </h3>
                 <p
                   class="text-slate-600 mb-4"
@@ -318,7 +342,7 @@
                   class="font-bold text-center mb-2"
                   data-lang-key="siddhaStatusTitle"
                 >
-                  <span class="mr-2">📊</span>சித்த மருத்துவ அறிவின் நிலை
+                  <span class="mr-2" aria-hidden="true">📊</span>சித்த மருத்துவ அறிவின் நிலை
                 </h4>
                 <div class="chart-container">
                   <canvas id="siddhaChart"></canvas>
@@ -340,7 +364,7 @@
                 class="text-2xl font-bold text-center text-[#EF476F] mb-6"
                 data-lang-key="turmericCaseTitle"
               >
-                <span class="mr-2">🌿</span>வழக்கு ஆய்வு: மஞ்சள் காப்புரிமைப்
+                <span class="mr-2" aria-hidden="true">🌿</span>வழக்கு ஆய்வு: மஞ்சள் காப்புரிமைப்
                 போர்
               </h3>
               <div class="timeline-container">
@@ -422,7 +446,7 @@
         </section>
 
         <!-- பகுதி 3: அடுத்த படிகள் -->
-        <section id="tab-next-steps" class="tab-content w-full">
+        <section id="tab-next-steps" class="tab-content w-full" role="tabpanel" aria-labelledby="tab-btn-next-steps">
           <div
             class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 roadmap-background w-full max-w-4xl mx-auto flex flex-col justify-center transition duration-300 ease-in-out hover:shadow-2xl"
           >
@@ -430,14 +454,14 @@
               class="text-3xl font-bold text-center mb-8 cascade delay-100"
               data-lang-key="nextStepsTitle"
             >
-              <span class="text-4xl mr-3">🚀</span>திட்ட வரைபடம்
+              <span class="text-4xl mr-3" aria-hidden="true">🚀</span>திட்ட வரைபடம்
             </h2>
             <div class="flex flex-col space-y-8">
               <!-- Phase 1 Flip Card -->
               <div class="info-card-flip-container cascade delay-200">
                 <div class="info-card-flipper">
                   <div class="info-card-front bg-gray-50 rounded-xl">
-                    <div class="icon-wrapper bg-blue-100 text-blue-700">🖥️</div>
+                    <div class="icon-wrapper bg-blue-100 text-blue-700" aria-hidden="true">🖥️</div>
                     <h3
                       class="text-xl font-bold mb-3 text-[#3e423e]"
                       data-lang-key="phase1Title"
@@ -483,7 +507,7 @@
               <div class="info-card-flip-container cascade delay-300">
                 <div class="info-card-flipper">
                   <div class="info-card-front bg-gray-50 rounded-xl">
-                    <div class="icon-wrapper bg-yellow-100 text-yellow-700">
+                    <div class="icon-wrapper bg-yellow-100 text-yellow-700" aria-hidden="true">
                       🔒
                     </div>
                     <h3
@@ -672,15 +696,13 @@
               எளிதாக்குகிறது, இது ஒரு வெளிப்படையான மற்றும் திறமையான
               எதிர்காலத்திற்கு வழிவகுக்கிறது.
             </p>
+            <!-- Video Slideshow -->
             <div class="max-w-4xl mx-auto p-4 bg-white rounded-lg shadow-md mt-10 cascade delay-600">
-              <h2 class="text-2xl font-bold text-center mb-6">POC for the app</h2>
-              <div class="relative" style="padding-bottom: 56.25%; height: 0;">
-                <video controls class="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg">
-                  <source src="video/proto.mp4" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
+              <h2 class="text-2xl font-bold text-center mb-6" data-lang-key="pocTitle">POC for the app</h2>
+              <div id="video-slideshow" class="relative rounded-lg overflow-hidden" style="padding-bottom: 56.25%; height: 0;">
+                <!-- Videos will be injected here by JavaScript -->
               </div>
-              <p class="text-center text-gray-600 mt-4">
+              <p class="text-center text-gray-600 mt-4" data-lang-key="pocDescription">
                 This video demonstrates the Proof of Concept for the application.
               </p>
             </div>
